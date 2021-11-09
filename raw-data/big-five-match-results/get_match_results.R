@@ -39,6 +39,9 @@ newdata <- newdata %>%
 results <- results %>%
   bind_rows(newdata)
 
+# add date column to display in app:
+results$data_updated <- Sys.time()
+
 
 # save up-to-date data
 saveRDS(results, here("raw-data", "big-five-match-results", "top5_league_results.rds"))
