@@ -32,6 +32,7 @@ newdata <- get_match_results(country = c("ENG", "ESP", "FRA", "GER", "ITA"), gen
 
 # filter out any playoffs, abandoned games, yet-to-be-played games, etc
 newdata <- newdata %>%
+  mutate(Wk = as.integer(Wk)) %>% 
   filter(!is.na(Wk),
          !is.na(HomeGoals))
 
