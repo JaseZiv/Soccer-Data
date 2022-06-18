@@ -8,7 +8,7 @@ This folder holds All advanced player season stats for players in the Big 5 Euro
 
 ## Big 5 Leagues Match Results
 
-This folder holds all match results data from the 2017-18 seasons to current for the big five Euro leagues. Data is extracted using `worldfootballR::get_match_resluts()`.
+This folder holds all match results data from the 2017-18 seasons to current for the big five Euro leagues. Data used to be extracted using `worldfootballR::get_match_results()`, however now makes use of `worldfootballR::load_match_results()`.
 
 ***
 

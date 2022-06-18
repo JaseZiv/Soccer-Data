@@ -6,7 +6,7 @@ library(here)
 # Get Data Using worldfootballR -------------------------------------------
 
 # scrape data
-playing_time <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "playing_time", team_or_player= "player")
+playing_time <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "playing_time", team_or_player= "player")
 
 # select and rename required columns
 playing_time <- playing_time %>% 
@@ -17,7 +17,7 @@ playing_time <- playing_time %>%
          TeamPlusMinusNetOnPitch90=On_minus_Off_Team.Success, TeamxGonPitch=onxG_Team.Success..xG., TeamxGAgainstOnPitch=onxGA_Team.Success..xG)
 
 #-----#
-standard <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "standard", team_or_player= "player")
+standard <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "standard", team_or_player= "player")
 
 standard <- standard %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, Gls, Ast, NonPenGls=G_minus_PK, PensMade=PK, PKatt, CrdY, CrdR, Gls90=Gls_Per,
@@ -25,14 +25,14 @@ standard <- standard %>%
          xA=xA_Expected, xGPer90=xG_Per, xAPer90=xA_Per)
 
 #-----#
-shooting <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "shooting", team_or_player= "player")
+shooting <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "shooting", team_or_player= "player")
 
 shooting <- shooting %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, Shots=Sh_Standard, SoT=SoT_Standard, `SoT%`=SoT_percent_Standard, Shots90=Sh_per_90_Standard,
          SoT90=SoT_per_90_Standard, GlsPerShot=G_per_Sh_Standard, GlsPerSoT90=G_per_SoT_Standard, AvgDistanceYds=Dist_Standard, ShotFK=FK_Standard)
 
 #-----#
-passing <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "passing", team_or_player= "player")
+passing <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "passing", team_or_player= "player")
 
 passing <- passing %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, PassCmp=Cmp_Total, PassAtt=Att_Total, `PassCompletion%`=Cmp_percent_Total,
@@ -41,7 +41,7 @@ passing <- passing %>%
          `PassCompletion%Long`=Cmp_percent_Long, KeyPasses=KP, PassFinalThird=Final_Third, CmpPassPenArea=PPA, CrossesPenArea=CrsPA, ProgressivePasses=Prog)
 
 #-----#
-passing_types <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "passing_types", team_or_player= "player")
+passing_types <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "passing_types", team_or_player= "player")
 
 passing_types <- passing_types %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Url, Born, LivePasses=Live_Pass, DeadPasses=Dead_Pass, PassFromFK=FK_Pass, PassUnderPressure=Press_Pass,
@@ -50,13 +50,13 @@ passing_types <- passing_types %>%
          PassOffside=Off_Outcomes, PassOutOfBounds=Out_Outcomes, PassIntercepted=Int_Outcomes, PassBlock=Blocks_Outcomes)
 
 #-----#
-gca <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "gca", team_or_player= "player")
+gca <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "gca", team_or_player= "player")
 
 gca <- gca %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, ShotCreatingActions=SCA_SCA, ShotCreatingActions90=SCA90_SCA)
 
 #-----#
-defense <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "defense", team_or_player= "player")
+defense <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "defense", team_or_player= "player")
 
 defense <- defense %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, Tackles=Tkl_Tackles, TacklesWon=TklW_Tackles, TacklesDefThird=`Def 3rd_Tackles`,
@@ -66,7 +66,7 @@ defense <- defense %>%
          Intercepts = Int, TackledPlusIntercepted=`Tkl+Int`, Clearances=Clr, Errors=Err)
 
 #-----#
-possession <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "possession", team_or_player= "player")
+possession <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "possession", team_or_player= "player")
 
 possession <- possession %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, Touches=Touches_Touches, TouchesDefPen=`Def Pen_Touches`, TouchesDefThird=`Def 3rd_Touches`,
@@ -77,14 +77,14 @@ possession <- possession %>%
          ReceivedPass=Rec_Receiving, ProgressivePassesReceived=Prog_Receiving)
 
 #-----#
-misc <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "misc", team_or_player= "player")
+misc <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "misc", team_or_player= "player")
 
 misc <- misc %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, Fouls=Fls, Fouled=Fld, Offsides=Off, PKsWon=PKwon, PKsConceeded=PKcon,
          OwnGoals=OG, LooseBallRecovered=Recov, ArielsWon=Won_Aerial, ArialsLost=Lost_Aerial)
 
 #-----#
-keepers <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "keepers", team_or_player= "player")
+keepers <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "keepers", team_or_player= "player")
 
 keepers <- keepers %>% 
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, KeeperGoalsAgainst=GA, KeeperGoalsAgainst90=GA90, KeeperSoTA=SoTA,
@@ -92,7 +92,7 @@ keepers <- keepers %>%
          KeeperPKAtt=PKatt_Penalty, KeeperPKAllowed=PKA_Penalty, KeeperPKSaved=PKsv_Penalty, KeeperPKMissed=PKm_Penalty, `KeeperPKSaved%`=Save_percent_Penalty)
 
 #-----#
-keepers_adv <- fb_big5_advanced_season_stats(season_end_year= 2022, stat_type= "keepers_adv", team_or_player= "player")
+keepers_adv <- load_fb_big5_advanced_season_stats(season_end_year= c(2020:2022), stat_type= "keepers_adv", team_or_player= "player")
 
 keepers_adv <- keepers_adv %>%
   select(Season_End_Year, Squad, Comp, Player, Nation, Pos, Age, Born, Url, OwnGoalKeeper=OG_Goals, KeeperPostShotxG=PSxG_Expected, KeeperPostShotxGPerSoT=PSxG_per_SoT_Expected,
@@ -104,7 +104,7 @@ keepers_adv <- keepers_adv %>%
 # Create final file -------------------------------------------------------
 
 # join all scraped data into one data frame
-all_joined <- playing_time %>% 
+fbref_data <- playing_time %>% 
   left_join(standard, by = c("Season_End_Year", "Squad", "Comp", "Player", "Nation", "Pos", "Age", "Born", "Url")) %>% 
   left_join(shooting, by = c("Season_End_Year", "Squad", "Comp", "Player", "Nation", "Pos", "Age", "Born", "Url")) %>% 
   left_join(passing, by = c("Season_End_Year", "Squad", "Comp", "Player", "Nation", "Pos", "Age", "Born", "Url")) %>% 
@@ -118,13 +118,7 @@ all_joined <- playing_time %>%
 
 # the new season appears to have player ages listed as years-days. Will strip away the days.
 # this can be changed though, possibly by converting the "-" to a "." and making age a decimal
-all_joined$Age <- gsub("-.*", "", all_joined$Age)
-
-# read in data scraped from older seasons already
-past_fbref <- readRDS(here("raw-data", "big-5-stats-and-values", "fbref_data_to_2020_2021.rds"))
-
-# join freshly scraped data with the older data
-fbref_data <- bind_rows(past_fbref, all_joined)
+fbref_data$Age <- gsub("-.*", "", all_joined$Age)
 
 
 
