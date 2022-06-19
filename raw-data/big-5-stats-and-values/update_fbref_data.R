@@ -118,7 +118,7 @@ fbref_data <- playing_time %>%
 
 # the new season appears to have player ages listed as years-days. Will strip away the days.
 # this can be changed though, possibly by converting the "-" to a "." and making age a decimal
-fbref_data$Age <- gsub("-.*", "", all_joined$Age)
+fbref_data$Age <- gsub("-.*", "", fbref_data$Age)
 
 
 
